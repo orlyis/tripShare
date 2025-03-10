@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fullNameEditText" type="id"/>
+    <item name="phoneEditText" type="id"/>
+    <item name="signUpButton" type="id"/>
+    <item name="loginLink" type="id"/>
+
+</resources>

@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.TripShare" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+    </style>
+
+    <style name="Theme.TripShare" parent="Base.Theme.TripShare" />
+</resources>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- כותרת ראשית -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to TripShare"
+        android:textSize="24sp"
+        android:textColor="#1A1B1E"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <!-- כפתור להתחלת תכנון טיול -->
+    <Button
+        android:id="@+id/btnGoToPlanTrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Planning"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginBottom="56dp"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/bottomNav">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="16dp">-->
+
+<!--        &lt;!&ndash; Header Title &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tvHeader"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:fontFamily="@font/sf_pro_display_semibold"-->
+<!--            android:text="Plan Your Trip"-->
+<!--            android:textColor="#1A1B1E"-->
+<!--            android:textSize="24sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/cardLocation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="52dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            app:cardCornerRadius="12dp"-->
+<!--            app:cardElevation="0dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvHeader"-->
+<!--            app:strokeColor="#E8E8E8"-->
+<!--            app:strokeWidth="1dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingHorizontal="16dp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/ic_location"-->
+<!--                    app:tint="#4B6BFB" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="12dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/sf_pro_display_regular"-->
+<!--                    android:text="Where are you going?"-->
+<!--                    android:textColor="#8F90A6"-->
+<!--                    android:textSize="16sp" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/ic_more"-->
+<!--                    app:tint="#8F90A6" />-->
+<!--            </LinearLayout>-->
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--        &lt;!&ndash; Date Input &ndash;&gt;-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/cardDate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="52dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            app:cardCornerRadius="12dp"-->
+<!--            app:cardElevation="0dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/cardLocation"-->
+<!--            app:strokeColor="#E8E8E8"-->
+<!--            app:strokeWidth="1dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingHorizontal="16dp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/ic_calendar"-->
+<!--                    app:tint="#4B6BFB" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="12dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/sf_pro_display_regular"-->
+<!--                    android:text="When are you going?"-->
+<!--                    android:textColor="#8F90A6"-->
+<!--                    android:textSize="16sp" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/ic_more"-->
+<!--                    app:tint="#8F90A6" />-->
+<!--            </LinearLayout>-->
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--        &lt;!&ndash; Interests Input &ndash;&gt;-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/cardInterests"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="52dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            app:cardCornerRadius="12dp"-->
+<!--            app:cardElevation="0dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/cardDate"-->
+<!--            app:strokeColor="#E8E8E8"-->
+<!--            app:strokeWidth="1dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingHorizontal="16dp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/ic_interests"-->
+<!--                    app:tint="#4B6BFB" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="12dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/sf_pro_display_regular"-->
+<!--                    android:text="What will you like to see?"-->
+<!--                    android:textColor="#8F90A6"-->
+<!--                    android:textSize="16sp" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/ic_more"-->
+<!--                    app:tint="#8F90A6" />-->
+<!--            </LinearLayout>-->
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--        &lt;!&ndash; Search Button &ndash;&gt;-->
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnSearch"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="52dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:backgroundTint="#4B6BFB"-->
+<!--            android:elevation="0dp"-->
+<!--            android:fontFamily="@font/sf_pro_display_medium"-->
+<!--            android:stateListAnimator="@null"-->
+<!--            android:text="Search"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textSize="16sp"-->
+<!--            app:cornerRadius="12dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/cardInterests" />-->
+
+<!--        &lt;!&ndash; Explore Nearby Section &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tvExploreNearby"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:fontFamily="@font/sf_pro_display_semibold"-->
+<!--            android:text="Explore Nearby"-->
+<!--            android:textColor="#1A1B1E"-->
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/btnSearch" />-->
+
+<!--        <HorizontalScrollView-->
+<!--            android:id="@+id/chipScrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:scrollbars="none"-->
+<!--            android:clipToPadding="false"-->
+<!--            android:paddingHorizontal="16dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvExploreNearby">-->
+
+<!--            <com.google.android.material.chip.ChipGroup-->
+<!--                android:id="@+id/chipGroup"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:singleLine="true"-->
+<!--                app:singleSelection="true"-->
+<!--                app:chipSpacing="8dp">-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="All Routes (50)"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+<!--                    app:chipBackgroundColor="#4B6BFB"-->
+<!--                    app:chipMinHeight="32dp"-->
+<!--                    app:chipStrokeWidth="0dp"/>-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="With Kids (20)"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+<!--                    app:chipBackgroundColor="#4B6BFB"-->
+<!--                    app:chipMinHeight="32dp"-->
+<!--                    app:chipStrokeWidth="1dp"-->
+<!--                    app:chipStrokeColor="#E8E8E8"/>-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Food &amp; Drinks"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+<!--                    app:chipBackgroundColor="#4B6BFB"-->
+<!--                    app:chipMinHeight="32dp"-->
+<!--                    app:chipStrokeWidth="1dp"-->
+<!--                    app:chipStrokeColor="#E8E8E8"/>-->
+<!--            </com.google.android.material.chip.ChipGroup>-->
+<!--        </HorizontalScrollView>-->
+
+<!--        &lt;!&ndash; Map View &ndash;&gt;-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/mapContainer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:cardCornerRadius="12dp"-->
+<!--            app:cardElevation="0dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/chipScrollView">-->
+
+<!--            <com.google.android.gms.maps.MapView-->
+<!--                android:id="@+id/mapView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"/>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--        &lt;!&ndash; Results Section with updated styling &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tvResultsFound"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="We found you 12 routes"-->
+<!--            android:textSize="20sp"-->
+<!--            android:fontFamily="@font/sf_pro_display_semibold"-->
+<!--            android:textColor="#1A1B1E"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="28dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/mapContainer"/>-->
+
+<!--        &lt;!&ndash; Results RecyclerView &ndash;&gt;-->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rvResults"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:clipToPadding="false"-->
+<!--            android:paddingHorizontal="20dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvResultsFound"/>-->
+<!--    </LinearLayout>-->
+
+<!--    </ScrollView>-->
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNav"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:background="#FFFFFF"-->
+<!--        android:elevation="4dp"-->
+<!--        app:itemIconSize="24dp"-->
+<!--        app:itemIconTint="@color/bottom_nav_colors"-->
+<!--        app:itemPaddingBottom="6dp"-->
+<!--        app:itemPaddingTop="6dp"-->
+<!--        app:itemTextColor="@color/bottom_nav_colors"-->
+<!--        app:labelVisibilityMode="labeled"-->
+<!--        app:menu="@menu/bottom_nav_menu"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
