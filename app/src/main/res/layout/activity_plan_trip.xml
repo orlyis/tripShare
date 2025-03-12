@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- תפריט תחתון -->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +22,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- כותרת -->
             <TextView
                 android:id="@+id/tvHeader"
                 android:layout_width="wrap_content"
@@ -33,7 +31,6 @@
                 android:textColor="#1A1B1E"
                 android:textSize="24sp" />
 
-            <!-- בחירת מיקום -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardLocation"
                 android:layout_width="match_parent"
@@ -65,11 +62,10 @@
                         android:completionThreshold="2"
                         android:hint="Where are you going?"
                         android:textColor="#8F90A6"
-                        android:textSize="16sp" /> <!-- הצגת הצעות החל מתו אחד -->
+                        android:textSize="16sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- בחירת תאריך -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDate"
                 android:layout_width="match_parent"
@@ -142,7 +138,6 @@
 
 
 
-            <!-- כפתור חיפוש -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSearch"
                 android:layout_width="match_parent"
@@ -155,7 +150,6 @@
                 android:textSize="16sp"
                 app:cornerRadius="12dp" />
 
-            <!-- כותרת "Explore Nearby" -->
             <TextView
                 android:id="@+id/tvExploreNearby"
                 android:layout_width="wrap_content"

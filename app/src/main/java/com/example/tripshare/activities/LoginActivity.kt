@@ -26,7 +26,13 @@ class LoginActivity : AppCompatActivity() {
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         val loginButton = findViewById<Button>(R.id.loginButton)
-        val signUpLink = findViewById<TextView>(R.id.signUpLink) // קישור להרשמה
+        val signUpLink = findViewById<TextView>(R.id.signUpLink)
+
+        signUpLink.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()

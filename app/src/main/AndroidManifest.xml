@@ -32,10 +32,6 @@
             </intent-filter>
         </activity>
 
-        <!-- מסך ה-Splash שיוצג לאחר ההתחברות -->
-        <activity
-            android:name=".activities.SplashActivity"
-            android:exported="false"/>
 
         <!-- מסך ההרשמה -->
         <activity
@@ -46,6 +42,10 @@
                 android:value=".activities.LoginActivity"/>
         </activity>
 
+        <!-- מסך ה-Splash שיוצג לאחר ההתחברות -->
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="false"/>
         <!-- מסך ראשי לאחר התחברות -->
         <activity
             android:name=".activities.MainActivity"

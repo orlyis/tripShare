@@ -16,7 +16,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // ✅ Use Coroutines instead of Handler
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000) // Wait 2 seconds
             startActivity(Intent(this@SplashActivity, PlanTripActivity::class.java))

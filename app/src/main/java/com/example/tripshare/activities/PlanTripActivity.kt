@@ -29,7 +29,6 @@ import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.Locale
 import android.view.View
-import com.example.tripshare.viewmodels.Place
 import com.example.tripshare.R
 import com.example.tripshare.adapters.ResultsAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,6 +36,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import android.content.Context
+import com.example.tripshare.Models.Place
 import com.example.tripshare.utils.FavoritesManager
 
 
@@ -85,43 +85,36 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plan_trip)
 
-        // אתחול מנהל המועדפים
         favoritesManager = FavoritesManager(this)
 
 
-        // אתחול רכיבי ה-UI
         autoCompleteLocation = findViewById(R.id.autoCompleteLocation)
         autoCompleteInterests = findViewById(R.id.autoCompleteInterests)
         tvSelectedDate = findViewById(R.id.tvSelectedDate)
         btnSearch = findViewById(R.id.btnSearch)
         recyclerView = findViewById(R.id.recyclerViewResults)
 
-        // ניקוי הרשימה כדי למנוע כפילויות
         placesList.clear()
 
-        // יצירת האדפטר עם פונקציה להוספת מקומות למועדפים
-        // יצירת האדפטר עם פונקציה להוספת מקומות למועדפים
+
         resultsAdapter = ResultsAdapter(placesList, this) {
             resultsAdapter.updateData(placesList) // עדכון המועדפים ברשימה
         }
 
-        // אתחול RecyclerView *רק לאחר שהאדפטר נוצר*
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = resultsAdapter
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
 
-        // אתחול פונקציות חיפוש ובחירה
         setupLocationSearch()
         setupInterestSelection()
         setupDateSelection()
 
 
-        // טעינת המפה
         val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        // לחיצה על כפתור החיפוש
         btnSearch.setOnClickListener {
             if (selectedInterests.isNotEmpty() && selectedLatitude != null && selectedLongitude != null) {
                 fetchPlacesFromGoogle(selectedLatitude!!, selectedLongitude!!)
@@ -130,7 +123,6 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
             }
         }
 
-        // ניווט בתפריט התחתון
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
@@ -162,7 +154,7 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
 
             if (!selectedInterestApiValue.isNullOrEmpty() && !selectedInterests.contains(selectedInterestApiValue)) {
                 selectedInterests.add(selectedInterestApiValue)
-                Log.d("DEBUG", "✅ Added Interest: $selectedInterestApiValue") // ✅ בדיקה אם נוסף לרשימה
+                Log.d("DEBUG", "✅ Added Interest: $selectedInterestApiValue")
                 updateSelectedInterestsUI()
             }
 
@@ -175,7 +167,7 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
         }
 
         val newText = selectedInterestNames.joinToString(", ")
-        Log.d("DEBUG", "🎯 Selected Interests for UI: $newText") // ✅ בדיקה
+        Log.d("DEBUG", "🎯 Selected Interests for UI: $newText")
         autoCompleteInterests.hint = newText
     }
 
@@ -363,11 +355,9 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
 
 
     private fun addPlacesToMap(places: List<Place>) {
-        // ✅ ניקוי סמנים ישנים כדי למנוע כפילות
         markersList.forEach { it.remove() }
         markersList.clear()
 
-        // ✅ הוספת סמנים חדשים
         places.forEach { place ->
             val marker = mMap.addMarker(
                 MarkerOptions()
@@ -378,7 +368,6 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
             marker?.let { markersList.add(it) }
         }
 
-        // ✅ התמקדות במיקום הראשון (אם יש תוצאות)
         if (places.isNotEmpty()) {
             val firstPlace = places.first().position
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(firstPlace, 12f))
@@ -401,7 +390,6 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
 
 
 
-    // כאשר המשתמש חוזר מ-FavoritesActivity, נעדכן את רשימת המועדפים
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -410,7 +398,6 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
         }
     }
 
-    // פונקציה שמעדכנת את מצב המועדפים ברשימה
     private fun updateFavoritesStatus() {
         placesList.forEach { place ->
             place.isFavorite = favoritesManager.isFavorite(place.placeId)
@@ -421,7 +408,7 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
 
     override fun onResume() {
         super.onResume()
-        updateFavoritesStatus() // מעדכן את הרשימה עם הנתונים המעודכנים
+        updateFavoritesStatus()
     }
 
     private fun addPlaceToRoute(place: Place) {
@@ -436,6 +423,5 @@ class PlanTripActivity() : AppCompatActivity(), OnMapReadyCallback, Parcelable {
 
 
 }
-
 
 

@@ -1,7 +1,7 @@
-package com.example.tripshare.viewmodels
-
+package com.example.tripshare.Models
 
 import com.google.android.gms.maps.model.LatLng
+
 
 data class Place(
     val placeId: String,
@@ -9,5 +9,5 @@ data class Place(
     val categories: List<String>,
     val imageUrl: String?,
     val position: LatLng,
-    var isFavorite: Boolean = false // נוסיף פרמטר כדי לבדוק אם המקום מועדף
+    var isFavorite: Boolean = false
 )

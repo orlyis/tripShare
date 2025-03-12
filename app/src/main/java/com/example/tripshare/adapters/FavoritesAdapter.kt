@@ -11,9 +11,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tripshare.Models.Place
 import com.example.tripshare.R
 import com.example.tripshare.activities.PlaceDetailsActivity
-import com.example.tripshare.viewmodels.Place
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
 
@@ -48,13 +48,11 @@ class FavoritesAdapter(private var places: MutableList<Place>, private val conte
             .load(place.imageUrl ?: R.drawable.placeholder_image)
             .into(holder.imageViewPlace)
 
-        holder.favoriteButton.setImageResource(R.drawable.ic_favorite) // לב מלא במסך מועדפים
+        holder.favoriteButton.setImageResource(R.drawable.ic_favorite)
 
-        // 🗑️ לחיצה על כפתור המועדפים תסיר את המקום
         holder.favoriteButton.setOnClickListener {
             removeFavorite(place, position)
         }
-        // 🆕 הוספת מעבר למסך `PlaceDetailsActivity` בעת לחיצה על הכרטיסייה
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PlaceDetailsActivity::class.java).apply {
                 putExtra("PLACE_ID", place.placeId)
@@ -72,31 +70,26 @@ class FavoritesAdapter(private var places: MutableList<Place>, private val conte
         places.addAll(newPlaces)
 
         if (newPlaces.isEmpty()) {
-            Log.e("FavoritesAdapter", "⚠️ WARNING: RecyclerView קיבל רשימה ריקה!")
+            Log.e("FavoritesAdapter", "⚠️ WARNING: RecyclerView ")
         } else {
-            Log.d("FavoritesAdapter", "✅ עדכון נתונים - ${newPlaces.size} מקומות נטענו")
+            Log.d("FavoritesAdapter", "✅ עדכון נתונים - ${newPlaces.size}  ")
         }
 
         notifyDataSetChanged()
     }
 
     private fun removeFavorite(place: Place, position: Int) {
-        // ✅ הסרת המקום מהרשימה המקומית
         places.removeAt(position)
         notifyItemRemoved(position)
 
-        // ✅ טעינת הנתונים מ-SharedPreferences
         val editor = sharedPreferences.edit()
         val savedFavorites = sharedPreferences.getString("favorite_places", "[]") ?: "[]"
 
-        // ✅ המרת המחרוזת לרשימה עם בדיקת טיפוס תקינה
         val type = object : TypeToken<MutableList<Place>>() {}.type
         val favoritePlaces: MutableList<Place> = gson.fromJson(savedFavorites, type) ?: mutableListOf()
 
-        // ✅ הסרת המקום לפי `placeId`
         favoritePlaces.removeAll { it.placeId == place.placeId }
 
-        // ✅ שמירת הרשימה המעודכנת חזרה ל-SharedPreferences
         editor.putString("favorite_places", gson.toJson(favoritePlaces))
         editor.apply()
 

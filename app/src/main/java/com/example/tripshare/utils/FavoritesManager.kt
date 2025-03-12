@@ -3,7 +3,8 @@ package com.example.tripshare.utils
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import com.example.tripshare.viewmodels.Place
+import com.example.tripshare.Models.Place
+
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -12,7 +13,7 @@ class FavoritesManager(context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("favorites_prefs", Context.MODE_PRIVATE)
 
-    private val listeners = mutableListOf<() -> Unit>() // רשימת מאזינים לשינויים
+    private val listeners = mutableListOf<() -> Unit>()
 
     fun getFavorites(): List<Place> {
         val json = sharedPreferences.getString("favorites_list", "[]") ?: "[]"
@@ -45,72 +46,25 @@ class FavoritesManager(context: Context) {
         }
 
         saveFavorites(favoritesList)
-        notifyListeners() // ⬅️ לעדכן את כל המסכים שמאזינים
+        notifyListeners()
 
-        return !exists // מחזיר אם המקום עכשיו במועדפים או לא
+        return !exists
     }
 
     private fun saveFavorites(favoritesList: List<Place>) {
         val json = Gson().toJson(favoritesList)
         sharedPreferences.edit().putString("favorites_list", json).apply()
 
-        Log.d("FavoritesManager", "💾 Saved ${favoritesList.size} favorite places to SharedPreferences")
-    }
-    // 📌 פונקציה שתאפשר למסכים להאזין לשינויים
-    fun registerListener(listener: () -> Unit) {
-        listeners.add(listener)
+        Log.d(
+            "FavoritesManager",
+            "💾 Saved ${favoritesList.size} favorite places to SharedPreferences"
+        )
     }
 
-    fun unregisterListener(listener: () -> Unit) {
-        listeners.remove(listener)
-    }
 
     private fun notifyListeners() {
         Log.d("FavoritesManager", "🔄 Notifying all listeners about favorite changes...")
         listeners.forEach { it.invoke() }
     }
 
-}//package com.example.tripshare.utils
-//
-//import android.content.Context
-//import android.content.SharedPreferences
-//import com.example.tripshare.viewmodels.Place
-//import com.google.gson.Gson
-//import com.google.gson.reflect.TypeToken
-//
-//class FavoritesManager(context: Context) {
-//
-//    private val sharedPreferences: SharedPreferences =
-//        context.getSharedPreferences("favorites_prefs", Context.MODE_PRIVATE)
-//
-//    fun getFavorites(): List<Place> {
-//        val json = sharedPreferences.getString("favorites_list", "[]") ?: "[]"
-//        val type = object : TypeToken<List<Place>>() {}.type
-//        return Gson().fromJson(json, type)
-//    }
-//
-//    fun isFavorite(placeId: String): Boolean {
-//        return getFavorites().any { it.placeId == placeId }
-//    }
-//
-//    fun toggleFavorite(place: Place): Boolean {
-//        val favoritesList = getFavorites().toMutableList()
-//        val exists = favoritesList.any { it.placeId == place.placeId }
-//
-//        if (exists) {
-//            favoritesList.removeIf { it.placeId == place.placeId } // הסרה אם כבר מועדף
-//        } else {
-//            favoritesList.add(place) // הוספה אם לא היה מועדף
-//        }
-//
-//        saveFavorites(favoritesList)
-//        return !exists // מחזיר האם עכשיו זה מועדף
-//    }
-//
-//    private fun saveFavorites(favoritesList: List<Place>) {
-//        val editor = sharedPreferences.edit()
-//        val json = Gson().toJson(favoritesList)
-//        editor.putString("favorites_list", json)
-//        editor.apply()
-//    }
-//}
+}

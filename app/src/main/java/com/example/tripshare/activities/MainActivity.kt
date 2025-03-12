@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // כפתור מעבר למסך תכנון הטיול
         val btnGoToPlanTrip = findViewById<Button>(R.id.btnGoToPlanTrip)
         btnGoToPlanTrip.setOnClickListener {
             val intent = Intent(this, PlanTripActivity::class.java)

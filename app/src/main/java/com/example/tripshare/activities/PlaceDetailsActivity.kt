@@ -31,12 +31,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_details)
 
-        // ✅ הגדרת חץ חזרה בפעולה
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // 🏠 אתחול רכיבי UI
         placeName = findViewById(R.id.placeName)
         placeCategory = findViewById(R.id.placeCategory)
         placeAddress = findViewById(R.id.placeAddress)
@@ -44,7 +42,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
         placeImage = findViewById(R.id.placeImage)
         btnNavigate = findViewById(R.id.btnNavigate)
 
-        // 📥 קבלת נתונים מה-Intent
         val placeId = intent.getStringExtra("PLACE_ID")
         val lat = intent.getDoubleExtra("LAT", 0.0)
         val lon = intent.getDoubleExtra("LON", 0.0)
@@ -55,7 +52,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
             Log.e("PlaceDetails", "❌ PLACE_ID is missing")
         }
 
-        // 🗺️ ניווט לגוגל מפות
         btnNavigate.setOnClickListener {
             val uri = Uri.parse("geo:$lat,$lon?q=$lat,$lon")
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -85,15 +81,13 @@ class PlaceDetailsActivity : AppCompatActivity() {
                     null
                 }
 
-                // 🏷️ עדכון UI
                 placeName.text = name
                 placeAddress.text = address
                 placeRating.text = "⭐ $rating"
                 placeCategory.text = categories.joinToString(", ")
 
-                // 🖼️ טעינת תמונה (אם קיימת)
                 Glide.with(this)
-                    .load(imageUrl ?: R.drawable.placeholder_image) // אם אין תמונה, מציג תמונת ברירת מחדל
+                    .load(imageUrl ?: R.drawable.placeholder_image)
                     .into(placeImage)
             },
             { error ->
@@ -103,11 +97,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
         Volley.newRequestQueue(this).add(request)
     }
 
-    // 🎯 חץ חזרה
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                finish() // סגירת האקטיביטי וחזרה אחורה
+                finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)

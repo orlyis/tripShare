@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.tripshare.viewmodels.Place
+import com.example.tripshare.Models.Place
 import com.example.tripshare.R
 import com.example.tripshare.activities.PlaceDetailsActivity
 import com.example.tripshare.utils.FavoritesManager
@@ -59,9 +59,8 @@ class ResultsAdapter(
             holder.favoriteButton.setImageResource(
                 if (newFavoriteState) R.drawable.ic_favorite else R.drawable.ic_favorite_border
             )
-            onFavoriteToggle() // עדכון ה-RecyclerView אחרי שינוי
+            onFavoriteToggle()
         }
-        // 🆕 הוספת מעבר למסך `PlaceDetailsActivity` בעת לחיצה על הכרטיסייה
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PlaceDetailsActivity::class.java).apply {
                 putExtra("PLACE_ID", place.placeId)
@@ -83,14 +82,13 @@ class ResultsAdapter(
             return
         }
 
-        // ✅ שמירה על המקומות הקיימים ועדכון רק אם יש שינוי
         val updatedList = places.toMutableList()
         newPlaces.forEach { newPlace ->
             val index = updatedList.indexOfFirst { it.placeId == newPlace.placeId }
             if (index != -1) {
-                updatedList[index] = newPlace // עדכון אם כבר קיים
+                updatedList[index] = newPlace
             } else {
-                updatedList.add(newPlace) // הוספה אם לא קיים
+                updatedList.add(newPlace)
             }
         }
 
@@ -98,5 +96,4 @@ class ResultsAdapter(
         notifyDataSetChanged()
     }
 }
-
 

@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:padding="12dp">
 
-        <!-- תמונת המקום -->
         <ImageView
             android:id="@+id/imageViewFavorite"
             android:layout_width="match_parent"
@@ -21,7 +20,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder_image" />
 
-        <!-- שם המקום -->
         <TextView
             android:id="@+id/textViewTitleFavorite"
             android:layout_width="wrap_content"
@@ -32,7 +30,6 @@
             android:textStyle="bold"
             android:layout_marginTop="8dp" />
 
-        <!-- קטגוריה -->
         <TextView
             android:id="@+id/textViewCategoryFavorite"
             android:layout_width="wrap_content"

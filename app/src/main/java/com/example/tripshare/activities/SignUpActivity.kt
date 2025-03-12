@@ -49,7 +49,6 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // יצירת משתמש ב-Firebase Authentication
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -60,13 +59,12 @@ class SignUpActivity : AppCompatActivity() {
                             "phone" to phone
                         )
 
-                        // שמירת פרטי המשתמש ב-Firebase Realtime Database
+
                         FirebaseDatabase.getInstance().getReference("users").child(userId)
                             .setValue(user)
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show()
 
-                                // ✅ התחברות אוטומטית למשתמש מיד אחרי הרישום
                                 auth.signInWithEmailAndPassword(email, password)
                                     .addOnCompleteListener { signInTask ->
                                         if (signInTask.isSuccessful) {
@@ -88,7 +86,6 @@ class SignUpActivity : AppCompatActivity() {
                 }
         }
 
-        // מעבר חזרה למסך ההתחברות
         loginLink.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()

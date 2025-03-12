@@ -24,7 +24,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
 
-        // אתחול ה-MapFragment
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -46,7 +45,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    // פונקציה להחזיר את המיקום שנבחר ל-PlanTripActivity
     override fun onBackPressed() {
         selectedLocation?.let {
             val resultIntent = Intent()
